@@ -1,0 +1,44 @@
+class Matrix:
+    def __init__(self, data):
+        """Save data as content of matrix."""
+        self.__data = data
+        pass
+    def add(self, other):
+        """Return self + other"""
+        sum = Matrix([[0]*len(self.__data[0])]*len(self.__data)).__data
+        for i in range(len(self.__data)):
+          sum[i] = other.__data[i]
+          for j in range(len(self.__data[i])):
+            other.__data[i][j] = self.__data[i][j] + other.__data[i][j]
+        return Matrix(sum)
+        pass
+    def subtract(self, other):
+        """Return self - other."""
+        sub = Matrix([[0]*len(self.__data[0])]*len(self.__data)).__data
+        for i in range(len(self.__data)):
+          sub[i] = other.__data[i]
+          for j in range(len(self.__data[i])):
+            other.__data[i][j] = self.__data[i][j] - other.__data[i][j]
+        return Matrix(sub)
+        pass
+
+
+    def to_string(self) -> str:
+        """
+        Return string representation of a Matrix. E.g.:
+        Matrix(
+        1, 2, 3
+        4, 5, 6
+        7, 8, 9
+        )
+        """
+        str_matrix = "Matrix("
+        for i in self.__data:
+          str_matrix = str_matrix + "\n"
+          for j in i:
+            str_matrix = str_matrix + str(j) + " "
+        return str_matrix + "\n" + ")"
+        
+    def get_data(self):
+      return self.__data
+      pass
